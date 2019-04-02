@@ -63,6 +63,6 @@ public class UserService {
         redisUtil.set(PrefixConstant.TOKEN_KEY + token, userDTO, RedisConstant.tokenToExpireDefault);
         // 缓存用户id和token的关系，用以确认同一用户同时只能有一个人可以登录
         redisUtil.set(PrefixConstant.USERID_KEY + userDTO.getId(), token);
-        CookieUtils.setCookie(response, CookieConstant.COOKI_NAME_TOKEN, token, RedisConstant.tokenToExpireDefault);
+        CookieUtils.setCookie(response, CookieConstant.COOKI_NAME_TOKEN, token, RedisConstant.cookieToExpireDefault);
     }
 }

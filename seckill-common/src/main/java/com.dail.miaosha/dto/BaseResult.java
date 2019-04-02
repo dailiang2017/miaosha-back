@@ -1,5 +1,6 @@
 package com.dail.miaosha.dto;
 
+import com.dail.miaosha.enums.ErrorCodeEnum;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -14,6 +15,7 @@ public class BaseResult implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private boolean success = true;
+    private int code;
     private String msg;
     private Object data;
 
@@ -44,6 +46,14 @@ public class BaseResult implements Serializable {
         BaseResult result = new BaseResult();
         result.setSuccess(false);
         result.setMsg(msg);
+        return result;
+    }
+
+    public static BaseResult error(ErrorCodeEnum codeEnum) {
+        BaseResult result = new BaseResult();
+        result.setSuccess(false);
+        result.setMsg(codeEnum.getRemark());
+        result.setCode(codeEnum.getCode());
         return result;
     }
 }

@@ -100,7 +100,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
     private void returnValue(HttpServletResponse response, ErrorCodeEnum codeEnum) throws IOException {
         response.setContentType("application/json;charset=UTF-8");
         OutputStream out = response.getOutputStream();
-        String str = JSON.toJSONString(BaseResult.error(codeEnum.getRemark()));
+        String str = JSON.toJSONString(BaseResult.error(codeEnum));
         out.write(str.getBytes("UTF-8"));
         out.flush();
     }
